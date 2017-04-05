@@ -17,6 +17,8 @@ ${BUILD_DIR}:
 
 manual: | ${BUILD_DIR}
 	zip -j ${BUILD_DIR}/update-zestimate.zip functions/update-zestimate/${MAIN}
+	echo "Build dir is "$(TRAVIS_BUILD_DIR)"
+	echo "venv is $(VIRTUAL_ENV)"
 	cd $(VIRTUAL_ENV)/site-packages
 	zip -r ${BUILD_DIR}/update-zestimate.zip *
 #	popd
