@@ -4,7 +4,7 @@ python:
   - '2.7'
 # before_install: pip install --user --upgrade pip
 install:
-  - pip install --user --upgrade pip
+  - pip install --upgrade pip
   - export PATH=$HOME/.local/bin:$PATH
   - pip install --only-binary=numpy numpy
   - pip install -U boto3 pandas requests BeautifulSoup4
