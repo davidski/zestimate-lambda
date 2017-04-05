@@ -17,8 +17,8 @@ ${BUILD_DIR}:
 
 manual: | ${BUILD_DIR}
 	zip -j ${BUILD_DIR}/update-zestimate.zip functions/update-zestimate/${MAIN}
-	zip -r ${BUILD_DIR}/update-zestimate.zip $VIRTUAL_ENV/lib/python2.7/site-packages/*
-	zip -r ${BUILD_DIR}/update-zestimate.zip $VIRTUAL_ENV/lib/python2.7/dist-packages/*
+	zip -r ${BUILD_DIR}/update-zestimate.zip $(VIRTUAL_ENV)/lib/python2.7/site-packages/*
+	zip -r ${BUILD_DIR}/update-zestimate.zip $(VIRTUAL_ENV)/lib/python2.7/dist-packages/*
 
 
 clean:
