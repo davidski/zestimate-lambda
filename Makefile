@@ -1,3 +1,4 @@
+SHELL     := /bin/bash
 SUBDIRS   := $(wildcard functions/*/)
 ZIPS      := $(addsuffix .zip,$(subst functions,,$(subst /,,$(SUBDIRS))))
 MAIN      = main.py
