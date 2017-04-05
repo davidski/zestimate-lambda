@@ -1,10 +1,10 @@
 anguage: python
 python:
-	- '2.7'
+  - '2.7'
 install: 
-	- pip install --upgrade pip setuptools wheel
-	- pip install --only-binary=numpy numpy
-	- pip install -U boto3 pandas requests BeautifulSoup4
+  - pip install --upgrade pip setuptools wheel
+  - pip install --only-binary=numpy numpy
+  - pip install -U boto3 pandas requests BeautifulSoup4
 script: make manual
 deploy:
   provider: s3
