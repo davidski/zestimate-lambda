@@ -1,7 +1,7 @@
 anguage: python
 python:
   - '2.7'
-before_install: pip install --upgrade pip
+before_install: pip install --user --upgrade pip
 install:
   - pip install --only-binary=numpy numpy
   - pip install -U boto3 pandas requests BeautifulSoup4
