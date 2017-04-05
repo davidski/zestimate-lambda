@@ -1,4 +1,3 @@
-SHELL     := /bin/bash
 SUBDIRS   := $(wildcard functions/*/)
 ZIPS      := $(addsuffix .zip,$(subst functions,,$(subst /,,$(SUBDIRS))))
 MAIN      = main.py
@@ -18,9 +17,9 @@ ${BUILD_DIR}:
 
 manual: | ${BUILD_DIR}
 	zip -j ${BUILD_DIR}/update-zestimate.zip functions/update-zestimate/${MAIN}
-	pushd $(VIRTUAL_ENV)/site-packages
+	cd $(VIRTUAL_ENV)/site-packages
 	zip -r ${BUILD_DIR}/update-zestimate.zip *
-	popd
+#	popd
 #	zip -r ${BUILD_DIR}/update-zestimate.zip $(VIRTUAL_ENV)/lib/python2.7/dist-packages/*
 
 
