@@ -17,9 +17,7 @@ ${BUILD_DIR}:
 
 manual: | ${BUILD_DIR}
 	zip -j ${BUILD_DIR}/update-zestimate.zip functions/update-zestimate/${MAIN}
-	echo "$(TRAVIS_BUILD_DIR)"
-	echo "$(VIRTUAL_ENV)"
-	cd $(VIRTUAL_ENV)/site-packages
+	cd $(VIRTUAL_ENV)/lib/python2.7/site-packages
 	zip -r ${BUILD_DIR}/update-zestimate.zip *
 #	popd
 #	zip -r ${BUILD_DIR}/update-zestimate.zip $(VIRTUAL_ENV)/lib/python2.7/dist-packages/*
