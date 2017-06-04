@@ -21,9 +21,9 @@ logger.addHandler(ch)
 
 zpid = os.environ['zpid']
 zwsid = os.environ['zwsid']
-bucket_name = os.environ['bucket_name']
-bucket_key = os.environ['bucket_key']
-sns_topic_arn = os.environ['sns_topic_arn']
+bucket_name = os.getenv('bucket_name')
+bucket_key = os.getenv('bucket_key')
+sns_topic_arn = os.getenv('sns_topic_arn')
 
 
 def lambda_handler(event, context):
@@ -46,18 +46,19 @@ def lambda_handler(event, context):
     # parse response
     soup = BeautifulSoup(response.text, "html.parser")
     zestimate = soup.zestimate.amount.string
-    last_updated = getattr(soup, 'last-updated').text
+    zestimate_updated = getattr(soup.zestimate, 'last-updated').text
     zestimate_high = soup.zestimate.high.text
     zestimate_low = soup.zestimate.low.text
     rent_zestimate = soup.rentzestimate.amount.text
     rent_high = soup.rentzestimate.high.text
     rent_low = soup.rentzestimate.low.text
-    logger.info("Zestimate as of %s: %s" % (last_updated, zestimate))
+    rent_updated = getattr(soup.rentzestimate, 'last-updated').text
+    logger.info("Zestimate as of %s: %s" % (zestimate_updated, zestimate))
 
     # is last update of Zestimate > last date in CSV?
-    if parse(last_updated) <= parse(data.iloc[-1, 0]):
+    if parse(zestimate_updated) <= parse(data.iloc[-1, 0]):
         logger.info("No update necessary - %s is not newer than %s. Exiting..." %
-                    (parse(last_updated), parse(data.iloc[-1, 0])))
+                    (parse(zestimate_updated), parse(data.iloc[-1, 0])))
         return
 
     # send message to SNS
@@ -65,14 +66,15 @@ def lambda_handler(event, context):
     response = client.publish(
         TopicArn=sns_topic_arn,
         Subject='Zestimate Updated',
-        Message='Current zestimate is ' + '${:,.2f}'.format(int(zestimate))
+        Message='Current zestimate is ' + '${:,.2f}'.format(int(zestimate)) +
+                ' (' + '${:,.2f}'.format(int(data.iloc[-1, 2]) - int(zestimate)) + ' )'
     )
 
     logger.info("Sent message %s to topic %s" %
                 (response['MessageId'], sns_topic_arn))
 
     # append Zestimate to data frame
-    data.loc[len(data)] = [last_updated, zestimate_high, zestimate,
+    data.loc[len(data)] = [zestimate_updated, zestimate_high, zestimate,
                            zestimate_low, rent_high, rent_zestimate, rent_low]
 
     # write to S3
