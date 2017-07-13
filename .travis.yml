@@ -5,7 +5,7 @@ install:
 - pip install --upgrade pip
 - export PATH=$HOME/.local/bin:$PATH
 - pip install --only-binary=numpy numpy
-- pip install -U boto3 pandas requests BeautifulSoup4
+- pip install -r requirements.txt
 script: make manual
 deploy:
   provider: s3

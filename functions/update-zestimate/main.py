@@ -9,6 +9,7 @@ import pandas as pd
 import requests
 from bs4 import BeautifulSoup
 from dateutil.parser import parse
+from s3fs.core import S3FileSystem
 
 # set up logging
 logger = logging.getLogger()
@@ -29,9 +30,8 @@ sns_topic_arn = os.getenv('sns_topic_arn')
 def lambda_handler(event, context):
     """ Main Lambda event handling loop """
     # read in CSV from S3
-    s3 = boto3.client('s3')
-    obj = s3.get_object(Bucket=bucket_name, Key=bucket_key)
-    data = pd.read_csv(obj['Body'], index_col=False)
+    s3fs = S3FileSystem(anon=False)
+    data = pd.read_csv(s3fs.open('{}/{}'.format(bucket_name, bucket_key), mode='rb'), index_col=False)
 
     # fetch Zestimate
     url = 'http://www.zillow.com/webservice/GetZestimate.htm?zws-id=' + \
@@ -79,6 +79,7 @@ def lambda_handler(event, context):
 
     # write to S3
     csv_body = data.to_csv(None, index=False)
+    s3 = boto3.client('s3')
     s3.put_object(Bucket=bucket_name, Key=bucket_key, Body=csv_body)
 
 
