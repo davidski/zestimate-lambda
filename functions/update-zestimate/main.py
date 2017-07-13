@@ -67,7 +67,7 @@ def lambda_handler(event, context):
         TopicArn=sns_topic_arn,
         Subject='Zestimate Updated',
         Message='Current zestimate is ' + '${:,.2f}'.format(int(zestimate)) +
-                ' (' + '${:,.2f}'.format(int(data.iloc[-1, 2]) - int(zestimate)) + ' )'
+                ' (change of ' + '${:,.2f}'.format(int(data.iloc[-1, 2]) - int(zestimate)) + ')'
     )
 
     logger.info("Sent message %s to topic %s" %
