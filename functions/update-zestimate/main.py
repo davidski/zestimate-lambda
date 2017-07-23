@@ -59,7 +59,7 @@ def lambda_handler(event, context):
     if parse(zestimate_updated) <= parse(data.iloc[-1, 0]):
         logger.info("No update necessary - %s is not newer than %s. Exiting..." %
                     (parse(zestimate_updated), parse(data.iloc[-1, 0])))
-        #return
+        return
 
     # send message to SNS
     client = boto3.client('sns')
