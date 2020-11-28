@@ -38,4 +38,4 @@ jobs:
         aws-region: us-west-2
     - name: Copy deployment ZIP to AWS
       run: |
-        aws s3 sync . s3://${{ secrets.DEPLOY_BUCKET }}/${{ secrets.DEPLOY_PATH }}
+        aws s3 cp update-zestimate.zip s3://${{ secrets.DEPLOY_BUCKET }}/${{ secrets.DEPLOY_PATH }}
