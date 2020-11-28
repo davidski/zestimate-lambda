@@ -7,9 +7,9 @@ import os
 import logging
 import pandas as pd
 import requests
-from bs4 import BeautifulSoup
 from dateutil.parser import parse
 from s3fs.core import S3FileSystem
+from datetime import datetime, timezone
 
 # set up logging
 logger = logging.getLogger()
@@ -34,8 +34,8 @@ def lambda_handler(event, context):
     data = pd.read_csv(s3fs.open('{}/{}'.format(bucket_name, bucket_key), mode='rb'), index_col=False)
 
     # fetch Zestimate
-    url = 'http://www.zillow.com/webservice/GetZestimate.htm?zws-id=' + \
-          zwsid + '&zpid=' + zpid + '&rentzestimate=TRUE'
+    url = 'https://api.bridgedataoutput.com/api/v2/zestimates?access_token=' + \
+          zwsid + '&zpid=' + zpid
     response = requests.get(url)
 
     if response.status_code != 200:
@@ -44,19 +44,21 @@ def lambda_handler(event, context):
         return
 
     # parse response
-    soup = BeautifulSoup(response.text, "html.parser")
-    zestimate = soup.zestimate.amount.string
-    zestimate_updated = getattr(soup.zestimate, 'last-updated').text
-    zestimate_high = soup.zestimate.high.text
-    zestimate_low = soup.zestimate.low.text
-    rent_zestimate = soup.rentzestimate.amount.text
-    rent_high = soup.rentzestimate.high.text
-    rent_low = soup.rentzestimate.low.text
-    rent_updated = getattr(soup.rentzestimate, 'last-updated').text
+    json_resp = response.json()
+    zestimate_resp = json_resp['bundle'][0]
+
+    zestimate = zestimate_resp['zestimate']
+    zestimate_updated = zestimate_resp['date']
+    zestimate_high = zestimate_resp['upper']
+    zestimate_low = zestimate_resp['lower']
+    rent_zestimate = zestimate_resp['rental']['zestimate']
+    rent_high = zestimate_resp['rental']['upper']
+    rent_low = zestimate_resp['rental']['lower']
+    rent_updated = zestimate_resp['rental']['date']
     logger.info("Zestimate as of %s: %s" % (zestimate_updated, zestimate))
 
     # is last update of Zestimate > last date in CSV?
-    if parse(zestimate_updated) <= parse(data.iloc[-1, 0]):
+    if parse(zestimate_updated, ignoretz=True).date() <= parse(data.iloc[-1, 0]).date():
         logger.info("No update necessary - %s is not newer than %s. Exiting..." %
                     (parse(zestimate_updated), parse(data.iloc[-1, 0])))
         return

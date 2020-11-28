@@ -1,5 +1,5 @@
-Update-Zestimate
-================
+Zestimate Tracker (a/k/a update-zestimate)
+==========================================
 
 Python based AWS Lambda function for checking the Zillow Zestimate of a 
 given property value.
@@ -15,7 +15,7 @@ Expected Environment Variables
 ------------------------------
 
 + zpid - Zillow property ID to track
-+ zwsid - Zillow web services ID (API key)
++ zwsid - Bridge Interactive API Server Token (for server-to-server communication)
 + bucket_name - S3 bucket name to store Zestimate history
 + bucket_key - S3 object name to store Zestimate history
 + sns_topic_arn - SNS topic to publish when new updates available
