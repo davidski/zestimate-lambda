@@ -36,5 +36,5 @@ s3fs==0.1.6
 s3transfer==0.3.3
 six==1.11.0
 urllib3==1.26.2
-wrapt==1.10.11
+wrapt==1.12.1
 yamllint==1.12.1
