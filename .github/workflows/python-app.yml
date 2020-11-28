@@ -28,7 +28,7 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Create ZIP
       run: |
-        zip -j update-zestimate.zip functions/update-zestimate/${MAIN}
+        zip -j update-zestimate.zip functions/update-zestimate/main.py
         zip -r update-zestimate.zip ./venv/lib/python3.8/site-packages/*
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
@@ -38,13 +38,4 @@ jobs:
         aws-region: us-west-2
     - name: Copy deployment ZIP to AWS
       run: |
-        aws s3 sync . s3://${{ secrets.BUCKET }}/${{ secrets.PATH }}
-    - name: Send message to Slack API
-      uses: archive/github-actions-slack@v1.1.0
-      id: notify
-      with:
-        slack-bot-user-oauth-access-token: ${{ secrets.SLACK_BOT_USER_OAUTH_ACCESS_TOKEN }}
-        slack-channel: test
-        slack-text: Hello! Event "${{ github.event_name }}" in "${{ github.repository }}" 🤓
-    - name: Result from "Send Message"
-      run: echo "The result was ${{ steps.notify.outputs.slack-result }}"
+        aws s3 sync . s3://${{ secrets.DEPLOY_BUCKET }}/${{ secrets.DEPLOY_PATH }}
