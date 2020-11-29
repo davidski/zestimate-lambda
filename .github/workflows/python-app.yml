@@ -29,7 +29,7 @@ jobs:
     - name: Create ZIP
       run: |
         zip -j update-zestimate.zip functions/update-zestimate/main.py
-        zip -r update-zestimate.zip ./venv/lib/python3.8/site-packages/*
+        cd ./venv/lib/python3.8/site-packages; zip -r ../../../../update-zestimate.zip *
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
