@@ -20,7 +20,7 @@ packaging==18.0
 pandas==1.1.4
 pathspec==0.5.9
 pip-upgrade==0.0.6
-pusher==2.0.1
+pusher==3.0.0
 pyasn1==0.4.4
 pycodestyle==2.6.0
 pycparser==2.19
