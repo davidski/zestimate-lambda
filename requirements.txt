@@ -21,7 +21,7 @@ pandas==1.1.4
 pathspec==0.5.9
 pip-upgrade==0.0.6
 pusher==3.0.0
-pyasn1==0.4.4
+pyasn1==0.4.8
 pycodestyle==2.6.0
 pycparser==2.20
 pyflakes==2.2.0
