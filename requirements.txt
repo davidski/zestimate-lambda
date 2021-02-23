@@ -22,7 +22,7 @@ pycodestyle==2.6.0
 pycparser==2.20
 pyflakes==2.2.0
 pylint==2.7.0
-pyOpenSSL==20.0.0
+pyOpenSSL==20.0.1
 pyparsing==2.4.7
 python-dateutil==2.8.1
 pytz==2020.4
