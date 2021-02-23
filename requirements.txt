@@ -2,7 +2,7 @@ asn1crypto==1.4.0
 certifi==2020.12.5
 cffi==1.14.4
 chardet==3.0.4
-cryptography==3.2.1
+cryptography==3.4.6
 docutils==0.16
 flake8==3.8.4
 idna==2.10
@@ -21,7 +21,7 @@ pyasn1==0.4.8
 pycodestyle==2.6.0
 pycparser==2.20
 pyflakes==2.2.0
-pylint==2.6.0
+pylint==2.7.0
 pyOpenSSL==20.0.0
 pyparsing==2.4.7
 python-dateutil==2.8.1
