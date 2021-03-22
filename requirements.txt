@@ -31,6 +31,6 @@ requests==2.25.1
 s3fs==0.5.2
 s3transfer==0.3.4
 six==1.15.0
-urllib3==1.26.3
+urllib3==1.26.4
 wrapt==1.12.1
 yamllint==1.26.0
