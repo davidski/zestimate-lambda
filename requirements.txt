@@ -6,7 +6,7 @@ cryptography==3.4.7
 docutils==0.17.1
 flake8==3.9.2
 idna==3.2
-isort==5.8.0
+isort==5.9.1
 jmespath==0.10.0
 mccabe==0.6.1
 ndg-httpsclient==0.5.1
