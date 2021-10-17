@@ -1,6 +1,6 @@
 asn1crypto==1.4.0
 certifi==2021.10.8
-cffi==1.14.6
+cffi==1.15.0
 chardet==4.0.0
 cryptography==35.0.0
 docutils==0.17.1
