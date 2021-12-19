@@ -2,7 +2,7 @@ asn1crypto==1.4.0
 certifi==2021.10.8
 cffi==1.15.0
 chardet==4.0.0
-cryptography==36.0.0
+cryptography==36.0.1
 docutils==0.18.1
 flake8==4.0.1
 isort==5.10.1
