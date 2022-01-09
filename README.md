@@ -11,6 +11,8 @@ newer than the last date in the file, a message is published to an
 SNS topic with the new value and the full Zestimate response is 
 appended to the CSV.
 
+Zestimates API documentation: https://bridgedataoutput.com/docs/explorer/zestimates#listZestimates
+
 Expected Environment Variables
 ------------------------------
 
@@ -18,7 +20,7 @@ Expected Environment Variables
 + zwsid - Bridge Interactive API Server Token (for server-to-server communication)
 + bucket_name - S3 bucket name to store Zestimate history
 + bucket_key - S3 object name to store Zestimate history
-+ sns_topic_arn - SNS topic to publish when new updates available
++ sns_topic_arn - SNS topic to publish to when new updates available
 
 Deployment
 ----------
