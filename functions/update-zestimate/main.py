@@ -52,7 +52,7 @@ def lambda_handler(event, context):
     zestimate_high = zestimate_resp['lowPercent']
     zestimate_low = zestimate_resp['highPercent']
     rent_zestimate = zestimate_resp['rentalZestimate']
-    rent_high = zestimate_resp['rentalLowPercent'
+    rent_high = zestimate_resp['rentalLowPercent']
     rent_low = zestimate_resp['rentalHighPercent']
     rent_updated = zestimate_resp['rentalTimestamp']
     logger.info("Zestimate as of %s: %s" % (zestimate_updated, zestimate))
