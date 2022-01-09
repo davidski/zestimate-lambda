@@ -70,7 +70,7 @@ def lambda_handler(event, context):
         Subject='Zestimate Updated',
         Message='Current zestimate is ' + '${:,.0f}'.format(int(zestimate)) +
                 ' (change of ' + '${:,.2f}'.format(int(zestimate) - int(data.iloc[-1, 2])) + '). ' +
-                'Low-High: {:,.0f} - {:,.0f}.'.format(int(zestimate_low), int(zestimate_high))
+                'Low-High: {:.1%} - {:.1%}.'.format(int(zestimate_low) / 100, int(zestimate_high) / 100)
     )
 
     logger.info("Sent message %s to topic %s" %
