@@ -20,7 +20,7 @@ formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(messag
 ch.setFormatter(formatter)
 logger.addHandler(ch)
 
-zpid = os.environ['zpid']
+zaddress = os.environ['zaddress']
 zwsid = os.environ['zwsid']
 bucket_name = os.getenv('bucket_name')
 bucket_key = os.getenv('bucket_key')
@@ -34,8 +34,8 @@ def lambda_handler(event, context):
     data = pd.read_csv(s3fs.open('{}/{}'.format(bucket_name, bucket_key), mode='rb'), index_col=False)
 
     # fetch Zestimate
-    url = 'https://api.bridgedataoutput.com/api/v2/zestimates?access_token=' + \
-          zwsid + '&zpid=' + zpid
+    url = 'https://api.bridgedataoutput.com/api/v2/zestimates_v2?access_token=' + \
+          zwsid + '&limit=1&near=' + zaddress
     response = requests.get(url)
 
     if response.status_code != 200:
@@ -48,13 +48,13 @@ def lambda_handler(event, context):
     zestimate_resp = json_resp['bundle'][0]
 
     zestimate = zestimate_resp['zestimate']
-    zestimate_updated = zestimate_resp['date']
-    zestimate_high = zestimate_resp['upper']
-    zestimate_low = zestimate_resp['lower']
-    rent_zestimate = zestimate_resp['rental']['zestimate']
-    rent_high = zestimate_resp['rental']['upper']
-    rent_low = zestimate_resp['rental']['lower']
-    rent_updated = zestimate_resp['rental']['date']
+    zestimate_updated = zestimate_resp['timestamp']
+    zestimate_high = zestimate_resp['lowPercent']
+    zestimate_low = zestimate_resp['highPercent']
+    rent_zestimate = zestimate_resp['rentalZestimate']
+    rent_high = zestimate_resp['rentalLowPercent'
+    rent_low = zestimate_resp['rentalHighPercent']
+    rent_updated = zestimate_resp['rentalTimestamp']
     logger.info("Zestimate as of %s: %s" % (zestimate_updated, zestimate))
 
     # is last update of Zestimate > last date in CSV?

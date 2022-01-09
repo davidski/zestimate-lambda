@@ -14,7 +14,7 @@ appended to the CSV.
 Expected Environment Variables
 ------------------------------
 
-+ zpid - Zillow property ID to track
++ zaddress - Address to track
 + zwsid - Bridge Interactive API Server Token (for server-to-server communication)
 + bucket_name - S3 bucket name to store Zestimate history
 + bucket_key - S3 object name to store Zestimate history
