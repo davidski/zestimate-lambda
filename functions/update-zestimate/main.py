@@ -34,7 +34,7 @@ def lambda_handler(event, context):
     data = pd.read_csv(s3fs.open('{}/{}'.format(bucket_name, bucket_key), mode='rb'), index_col=False)
 
     # fetch Zestimate
-    url = 'https://api.bridgedataoutput.com/api/v2/zestimates_v2?access_token=' + \
+    url = 'https://api.bridgedataoutput.com/api/v2/zestimates_v2/zestimates?access_token=' + \
           zwsid + '&limit=1&near=' + zaddress
     response = requests.get(url)
 
