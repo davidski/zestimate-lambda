@@ -25,7 +25,8 @@ Expected Environment Variables
 Deployment
 ----------
 
-The included [Makefile](./Makefile) will build a ZIP file which can be 
+Continuous Deployment is done via the GitHub Actions workflow. Alternatively, 
+the included [Makefile](./Makefile) will build a ZIP file which can be 
 deployed to AWS Lambda. This ZIP file will include all dependencies 
 (including Pandas, and therefore rather large).
 
