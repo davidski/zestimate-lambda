@@ -44,6 +44,6 @@ jobs:
         aws s3 cp update-zestimate.zip s3://${{ secrets.DEPLOY_BUCKET }}/${{ secrets.DEPLOY_PATH }}
     - name: Update Lambda
       run: |
-        aws lambda update-function-code --function-name ${{ secrets.LAMBDA_FUNCTION_NAME }} --s3-bucket ${{ secrets.DEPLOY_BUCKET}} --s3-key ${{ secrets.DEPLOY_PATH }}
+        aws lambda update-function-code --function-name ${{ secrets.LAMBDA_FUNCTION_NAME }} --s3-bucket ${{ secrets.DEPLOY_BUCKET}} --s3-key ${{ secrets.DEPLOY_PATH }}  > /dev/null
 
 
