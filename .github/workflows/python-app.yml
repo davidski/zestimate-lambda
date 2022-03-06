@@ -24,9 +24,9 @@ jobs:
       uses: actions/setup-python@v2
       with:
         python-version: 3.9
+        cahce: 'pip'
     - name: Install dependencies
       run: |
-        python -m pip install --upgrade pip
         if [ -f requirements.txt ]; then pip install --target ./package -r requirements.txt; fi
     - name: Create ZIP
       run: |
