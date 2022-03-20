@@ -5,7 +5,7 @@ aiosignal==1.2.0
 asn1crypto==1.5.1
 async-timeout==4.0.2
 attrs==21.4.0
-botocore==1.24.21
+botocore==1.24.22
 certifi==2021.10.8
 cffi==1.15.0
 chardet==4.0.0
