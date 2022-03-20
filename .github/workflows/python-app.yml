@@ -24,7 +24,7 @@ jobs:
       uses: actions/setup-python@v3
       with:
         python-version: 3.9
-        cahce: 'pip'
+        cache: 'pip'
     - name: Install dependencies
       run: |
         if [ -f requirements.txt ]; then pip install --target ./package -r requirements.txt; fi
