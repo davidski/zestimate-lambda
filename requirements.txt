@@ -28,7 +28,7 @@ python-dateutil==2.8.2
 pytz==2022.1
 PyYAML==6.0
 requests==2.27.1
-s3fs==2022.3.0
+s3fs==2022.5.0
 s3transfer==0.5.2
 six==1.16.0
 urllib3==1.26.9
