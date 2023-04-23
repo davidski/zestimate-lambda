@@ -16,7 +16,7 @@ isort==5.10.1
 jmespath==1.0.1
 multidict==6.0.2
 ndg-httpsclient==0.5.1
-numpy==1.23.3
+numpy==1.24.3
 packaging==21.3
 pandas==2.0.0
 pathspec==0.10.1
