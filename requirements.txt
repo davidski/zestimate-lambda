@@ -20,7 +20,7 @@ numpy==1.23.3
 packaging==21.3
 pandas==2.0.0
 pathspec==0.10.1
-pyasn1==0.4.8
+pyasn1==0.5.0
 pycparser==2.21
 pyOpenSSL==23.1.1
 pyparsing==3.0.9
