@@ -14,7 +14,7 @@ fsspec==2023.6.0
 idna==3.4
 isort==5.10.1
 jmespath==1.0.1
-multidict==6.0.2
+multidict==6.0.4
 ndg-httpsclient==0.5.1
 numpy==1.24.3
 packaging==23.1
