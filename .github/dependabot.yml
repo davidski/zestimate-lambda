@@ -5,8 +5,12 @@
 
 version: 2
 updates:
-  - package-ecosystem: "pip" # See documentation for possible values
-    directory: "/" # Location of package manifests
+  - package-ecosystem: "pip"  # See documentation for possible values
+    directory: "/"  # Location of package manifests
+    groups:
+      pip:
+        patterns:
+          - "*"
     schedule:
       interval: "weekly"
       day: "sunday"
@@ -15,6 +19,10 @@ updates:
   # Maintain dependencies for GitHub Actions
   - package-ecosystem: "github-actions"
     directory: "/"
+    groups:
+      gha:
+        patterns:
+          - "*"
     schedule:
       interval: "weekly"
       day: "sunday"
