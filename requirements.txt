@@ -10,14 +10,14 @@ chardet==5.2.0
 charset-normalizer==3.3.2
 cryptography==42.0.5
 frozenlist==1.4.1
-fsspec==2024.2.0
+fsspec==2024.3.0
 idna==3.6
 isort==5.13.2
 jmespath==1.0.1
 multidict==6.0.5
 ndg-httpsclient==0.5.1
 numpy==1.26.4
-packaging==23.2
+packaging==24.0
 pandas==2.2.1
 pathspec==0.12.1
 pyasn1==0.5.1
@@ -28,8 +28,8 @@ python-dateutil==2.9.0.post0
 pytz==2024.1
 PyYAML==6.0.1
 requests==2.31.0
-s3fs==2024.2.0
-s3transfer==0.10.0
+s3fs==2024.3.0
+s3transfer==0.10.1
 six==1.16.0
 urllib3==2.2.1
 wrapt==1.16.0
