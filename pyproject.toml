@@ -1,13 +1,11 @@
 [project]
-name = "zestimate-lambda"
-classifiers = [ "License :: OSI Approved :: MIT License",]
+name = "zestimate"
 readme="README.md"
 dynamic = ["version"]
 dependencies = [
   "boto3",
-  "logging",
   "pandas",
   "requests",
-  "datetime",
-  "s3fs"
+  "s3fs",
+  "python-dateutil"
 ]
