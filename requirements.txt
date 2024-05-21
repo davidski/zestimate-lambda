@@ -27,7 +27,7 @@ python-dateutil==2.9.0.post0
     #   pandas
 pytz==2024.1
     # via pandas
-requests==2.31.0
+requests==2.32.0
 s3fs==0.4.2
 s3transfer==0.10.1
     # via boto3
