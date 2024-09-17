@@ -1,3 +1,5 @@
+**As of September, 2024, Zillow/Bridge has limited API access to busineses.<br/>This ends seven years of acccessability to this API.<br/>This project is now archived.**
+
 Zestimate Tracker (a/k/a update-zestimate)
 ==========================================
 
